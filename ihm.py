@@ -6,18 +6,30 @@ from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
     QPushButton, QTableWidget, QLineEdit, QMessageBox, QInputDialog, QFileDialog
 )
+from PyQt5.QtGui import QIcon
+
+# pour le .exe et le setup
+def get_resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
+
 
 class IHM(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("ExcelMerger")
+        self.setWindowIcon(QIcon(get_resource_path("ico.ico")))
         self.resize(800, 400)
         self.css()
         
         # tableau
         self.table = QTableWidget(0, 4)
+        self.table.verticalHeader().setDefaultSectionSize(60)  # Par exemple, 40 pixels de hauteur
         self.table.setColumnWidth(0, 15)
-        self.table.setColumnWidth(1, 100)
+        self.table.setColumnWidth(1, 140)
         self.table.setColumnWidth(2, 300)
         self.table.setColumnWidth(3, 100)
         self.table.setHorizontalHeaderLabels(["", "", "Fichier", "Texte colonne 1"])
@@ -156,8 +168,8 @@ class IHM(QMainWindow):
 
         try:
             existing_configs = []
-            if os.path.exists("configs.txt"):
-                with open("configs.txt", "r") as f:
+            if os.path.exists(get_resource_path("configs.txt")):
+                with open(get_resource_path("configs.txt"), "r") as f:
                     existing_configs = [json.loads(line.strip()) for line in f.readlines()]
         except Exception as e:
             QMessageBox.critical(self, "Erreur", f"Erreur lors de la lecture des configurations existantes : {e}")
@@ -170,7 +182,7 @@ class IHM(QMainWindow):
 
         config_line = {"name": config_name, "data": files_and_texts}
         try:
-            with open("configs.txt", "a") as f:
+            with open(get_resource_path("configs.txt"), "a") as f:
                 f.write(json.dumps(config_line) + "\n")
             QMessageBox.information(self, "Succès", f"Configuration '{config_name}' sauvegardée.")
         except Exception as e:
@@ -179,7 +191,7 @@ class IHM(QMainWindow):
 
     def choose_configuration(self):
         try:
-            with open("configs.txt", "r") as f:
+            with open(get_resource_path("configs.txt"), "r") as f:
                 lines = f.readlines()
             configs = [json.loads(line.strip()) for line in lines]
         except FileNotFoundError:
@@ -210,7 +222,7 @@ class IHM(QMainWindow):
 
     def css(self):
         try:
-            with open("styles.css", "r") as file:
+            with open(get_resource_path("styles.css"), "r") as file:
                 self.setStyleSheet(file.read())
         except FileNotFoundError:
             print("Le fichier styles.css est introuvable.")
