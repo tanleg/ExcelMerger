@@ -1,0 +1,46 @@
+QMainWindow {
+    background-color: #f0f0f0;
+}
+
+QTableWidget {
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    gridline-color: #ddd;
+}
+
+QTableWidget::item {
+    padding: 5px;
+}
+
+QPushButton {
+    background-color: #7A90A4;
+    color: white;
+    border-radius: 5px;
+    padding: 8px;
+}
+
+QPushButton:hover {
+    background-color: #8CACD3;
+}
+
+#btnSupprLigne {
+    background-color: #BD3100;
+}
+
+#btnSupprLigne:hover {
+    background-color: #FC4E00;
+}
+
+#btnMerge {
+    background-color: #679436;
+}
+
+#btnMerge:hover {
+    background-color: #A4BD01;
+}
+
+QLineEdit {
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 3px;
+}

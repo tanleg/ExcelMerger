@@ -1,0 +1,3 @@
+{"name": "gred", "data": [["D:/Perso-Programation/excelmerger/ExcelMerger/f1.xlsx", "f1"]]}
+{"name": "ezfez", "data": [["D:/Perso-Programation/excelmerger/ExcelMerger/f1.xlsx", "f1"], ["D:/Perso-Programation/excelmerger/ExcelMerger/f3.xlsx", "f3"]]}
+{"name": "thr", "data": [["D:/Perso-Programation/excelmerger/ExcelMerger/f1.xlsx", "f1"], ["D:/Perso-Programation/excelmerger/ExcelMerger/f3.xlsx", "f3"]]}
