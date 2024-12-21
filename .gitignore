@@ -4,4 +4,4 @@ dist
 build
 *.spec
 inno_setup_script.iss
-ExcelMergerSetup.exe
+# ExcelMergerSetup.exe
